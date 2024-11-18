@@ -1,4 +1,4 @@
-export async function onRequest(request) {
+export async function onRequest(context) {
   const { request } = context;
   const params = new URLSearchParams(request.url.slice(request.url.indexOf('?')));
   const name = params.has('name') ? params.get('name') : 'World';
