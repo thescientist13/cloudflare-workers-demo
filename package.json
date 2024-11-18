@@ -1,0 +1,13 @@
+{
+  "name": "cloudflare-workers-demo",
+  "version": "1.0.0",
+  "description": "A demonstration repo for Cloudflare workers",
+  "homepage": "https://github.com/thescientist13/cloudflare-workers-demo#readme",
+  "author": "Owen Buckley <owen@thegreenhouse.io>",
+  "license": "ISC",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thescientist13/cloudflare-workers-demo.git"
+  }
+}
