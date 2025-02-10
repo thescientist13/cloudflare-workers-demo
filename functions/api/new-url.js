@@ -9,6 +9,22 @@
 import path from 'path';
 
 // https://www.google.com/search?q=nodejs+get+current+directory+esm+without+import.meta.url&mstk=AUtExfARrZgKEUllDyBiMI5CiJgqvSnT3ktKruzum9rGhiaS48lqV7ae8qbgEYc3YiXiaUM4ZJb2Rs_46yvjZUJrlZ-eQjHqCdFyUmQujWBTYpvzORgBMSfcKT78HHRdP-4es72iLZNctvGv_CFntNPmpK-FNW6CfsO6PzGp5nGHzEdSyjzep1QXdo8_xqhLaJSa2zHfGD44OrrR42CMsf7nvtodBqFns6_tfeqzz6QyWu_rWPU_OysRk20A7IFuFpp1wtRka1JhHW-5waI_A9VjLYpDv-213BmhWtokhSMQ73x8hmDzrm84YXgHDhxJ2oOm8Q&csuir=3
+// function getCurrentDirectory() {
+//   const error = new Error();
+//   Error.captureStackTrace(error);
+//   const stack = error.stack;
+
+//   console.log({ stack});
+//   const callerLine = stack.split('\n')[2];
+//   console.log({ callerLine });
+//   const callerFile = callerLine.slice(callerLine.indexOf('file://')); // match(/file:\/\//)[0];
+//   console.log({ callerFile });
+//   const currentDir = `file:${path.dirname(callerFile.split(':')[1])}`; // path.dirname(callerFile);
+
+//   console.log({ currentDir });
+//   return currentDir;
+// }
+
 function getCurrentDirectory() {
   const error = new Error();
   Error.captureStackTrace(error);
@@ -17,12 +33,11 @@ function getCurrentDirectory() {
   console.log({ stack});
   const callerLine = stack.split('\n')[2];
   console.log({ callerLine });
-  const callerFile = callerLine.slice(callerLine.indexOf('file://')); // match(/file:\/\//)[0];
+  const callerFile = callerLine.match(/\((.*?):\d+:\d+\)/)[1];
   console.log({ callerFile });
-  const currentDir = `file:${path.dirname(callerFile.split(':')[1])}`; // path.dirname(callerFile);
-
+  const currentDir = path.dirname(callerFile);
   console.log({ currentDir });
-  return currentDir;
+  return `file://${currentDir}`;
 }
 
 const fakeImportMetaUrl = getCurrentDirectory();
