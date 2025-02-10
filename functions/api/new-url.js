@@ -14,14 +14,14 @@ function getCurrentDirectory() {
   Error.captureStackTrace(error);
   const stack = error.stack;
 
-  // console.log({ stack});
+  console.log({ stack});
   const callerLine = stack.split('\n')[2];
-  // console.log({ callerLine });
+  console.log({ callerLine });
   const callerFile = callerLine.slice(callerLine.indexOf('file://')); // match(/file:\/\//)[0];
-  // console.log({ callerFile });
+  console.log({ callerFile });
   const currentDir = `file:${path.dirname(callerFile.split(':')[1])}`; // path.dirname(callerFile);
 
-  // console.log({ currentDir });
+  console.log({ currentDir });
   return currentDir;
 }
 
