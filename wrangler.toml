@@ -1,3 +1,0 @@
-name = "cloudflare-workers-demo"
-pages_build_output_dir = "./public"
-compatibility_flags = ["new_module_registry"]
